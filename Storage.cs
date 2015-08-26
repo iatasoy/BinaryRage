@@ -58,7 +58,12 @@ namespace BinaryRage
 
 		public static byte[] GetFromStorage(string key, string filelocation)
 		{
+			            if (ExistingStorageCheck(key, filelocation) == true)
+			            {
 			return File.ReadAllBytes(GetExactFileLocation(key, filelocation));
+			            }
+			            
+			            return null;
 		}
 
 		public static bool ExistingStorageCheck(string key, string filelocation)
