@@ -9,6 +9,11 @@ namespace BinaryRage.Functions
 		//Compress bytes
 		public static byte[] CompressGZip(byte[] raw)
 		{
+			if(raw==null)
+			{
+				return null;
+			}
+			
 			using (MemoryStream memory = new MemoryStream())
 			{
 				using (GZipStream gzip = new GZipStream(memory, CompressionMode.Compress, false))
@@ -22,6 +27,12 @@ namespace BinaryRage.Functions
 		//Decompress bytes
 		public static byte[] DecompressGZip(byte[] gzip)
 		{
+			
+			if(gzip==null)
+			{
+				return null;
+			}
+			
 			using (GZipStream stream = new GZipStream(new MemoryStream(gzip), CompressionMode.Decompress))
 			{
 				const int size = 4096;
